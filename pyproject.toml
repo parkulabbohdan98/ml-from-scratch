@@ -1,18 +1,15 @@
 [project]
 name = "ml-from-scratch"
 version = "0.1.0"
-description = "Add your description here"
+description = "Classic ML algorithms implemented with NumPy only"
 readme = "README.md"
 authors = [
     { name = "Bohdan Parkulab", email = "parkulab.bohdan.98@gmail.com" }
 ]
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
     "numpy>=2.5.3",
 ]
-
-[project.scripts]
-ml-from-scratch = "ml_from_scratch:main"
 
 [build-system]
 requires = ["uv_build>=0.12.10,<0.13.0"]
@@ -25,3 +22,17 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.16.6",
 ]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.mypy]
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+addopts = "-q --cov=ml_from_scratch --cov-report=term-missing"
+testpaths = ["tests"]
